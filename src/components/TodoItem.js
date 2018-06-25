@@ -5,18 +5,26 @@ export default class TodoItem extends Component {
     const { todos } = this.props;
 
     return (
-      <ul>
-        {todos
-          ? todos.map(todo => (
-              <div>
-                <li>{todo.name}</li>
-                <li>{todo.phone}</li>
-                <li>{todo.email}</li>
-                <li>{todo.description}</li>
-              </div>
-            ))
-          : null}
-      </ul>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todos.map(todo => (
+            <tr>
+              <th scope="row">#</th>
+              <td>{todo.name}</td>
+              <td>{todo.email}</td>
+              <td>{todo.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   }
 }

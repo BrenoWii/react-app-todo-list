@@ -23,28 +23,46 @@ class Form extends Component {
   render() {
     console.log(this.state);
     return (
-      <div>
-        <div>
+      <div className="form-inline">
+        <div className="form-group mb-2">
           <label for="Nome">Nome:</label>
-          <input type="text" name="name" onChange={this.handleChange} />
+          <input
+            className="form-control"
+            type="text"
+            name="name"
+            onChange={this.handleChange}
+          />
         </div>
-        <div>
+        <div class="form-group  mb-2">
           <label for="phone">Telefone:</label>
-          <input type="phone" name="phone" onChange={this.handleChange} />
+          <input
+            className="form-control"
+            type="phone"
+            name="phone"
+            onChange={this.handleChange}
+          />
         </div>
-        <div>
+        <div class="form-group  mb-2">
           <label for="email">E-mail:</label>
-          <input type="email" name="email" onChange={this.handleChange} />
+          <input
+            className="form-control"
+            type="email"
+            name="email"
+            onChange={this.handleChange}
+          />
         </div>
-        <div>
+        <div class="form-group  mb-2">
           <label for="msg">Descrição:</label>
           <textarea
+            className="form-control"
             type="text"
             name="description"
             onChange={this.handleChange}
           />
         </div>
         <button
+          style={{ "margin-top": "30px" }}
+          className="btn btn-primary"
           onClick={() => {
             this.addTodo(this.state.todos);
           }}

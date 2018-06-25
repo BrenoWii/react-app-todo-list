@@ -14,7 +14,9 @@ class App extends Component {
     this.addTodo = this.addTodo.bind(this);
   }
   addTodo(todoValues) {
-    this.setState({ todoValues: [{ ...todoValues }] });
+    this.setState({
+      todoValues: [...this.state.todoValues, { ...todoValues }]
+    });
   }
   remoteTodo(id) {
     console.log("isso remove", id);
