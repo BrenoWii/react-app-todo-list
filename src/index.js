@@ -12,23 +12,39 @@ class App extends Component {
       todoValues: []
     };
     this.addTodo = this.addTodo.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
   }
   addTodo(todoValues) {
     this.setState({
       todoValues: [...this.state.todoValues, { ...todoValues }]
     });
   }
-  remoteTodo(id) {
-    console.log("isso remove", id);
+  todoToForm(index) {
+    this.setState({
+      todoUpdate: { ...this.state.todoValues.splice(index,1)}
+    });
+  }
+  removeTodo(id) {
+    this.setState({
+      todoValues:[this.state.todoValues.find((todo,index)=>index !==id)]
+    })
   }
   render() {
     console.log("state,index", this.state);
     return (
       <div className="App">
         <div className="container">
-          <Header />
-          <Form addTodo={this.addTodo} />
-          <TodoItem todos={this.state.todoValues} />
+          <Header title={'Essa vai para voce que achhou que eu estava aqui sofrendo'} />
+          <Form addTodo={this.addTodo}
+            todoToUpdate={this.state.todoToForm}
+
+
+           />
+          <TodoItem 
+            todos={this.state.todoValues}
+            remove={this.removeTodo}
+          
+          />
         </div>
       </div>
     );

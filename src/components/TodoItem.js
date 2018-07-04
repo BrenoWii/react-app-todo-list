@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 
 export default class TodoItem extends Component {
+  handleUpdate = (index) => () => {
+    console.log("isso atualiza");
+  };
+  handleExclude = (index)  => ()=>{
+    this.props.remove(index)
+  };
+
   render() {
+    console.log("isso e a props",this.props);
     const { todos } = this.props;
 
     return (
@@ -15,14 +23,23 @@ export default class TodoItem extends Component {
           </tr>
         </thead>
         <tbody>
-          {todos.map(todo => (
+        {todos[0]  ? 
+        <div>
+          {todos.map((todo, index) => (
             <tr>
-              <th scope="row">#</th>
+              <td>
+                <button onClick={this.handleUpdate(index)}>alterar </button>
+                <button onClick={this.handleExclude(index)}>excluir </button>
+              </td>
               <td>{todo.name}</td>
               <td>{todo.email}</td>
               <td>{todo.description}</td>
             </tr>
           ))}
+          </div>
+          : 'nao existem tarefas'}
+          
+
         </tbody>
       </table>
     );
